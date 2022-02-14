@@ -4,5 +4,5 @@ Addition and Subtraction functions also implemented with O(log_18(n)) time compl
 
 ## Contributors
 BT20CSE216 Abhishek Kanojia
-BT20CSE209 Kshitij Agarkar
-BT20CSE214 Aviral Verma
+<br>BT20CSE209 Kshitij Agarkar
+<br>BT20CSE214 Aviral Verma
