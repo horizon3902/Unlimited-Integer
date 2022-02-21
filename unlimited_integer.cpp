@@ -133,7 +133,7 @@ public:
         vector<string> lli3;
         int carry = 0;
 
-        int l1, l2, op = 0, g = 0;
+        int l1, l2, g = 0;
         for (l1 = lli1.size() - 1, l2 = lli2.size() - 1; (l1 >= 0) && (l2 >= 0); l1--, l2--)
         {
 
@@ -143,20 +143,20 @@ public:
                 if (lli3[0][0] == '2')
                 {
                     /* code */
-                    lli3[op] = lli3[op].substr(1, 18);
+                    lli3[0] = lli3[0].substr(1, 18);
 
                     // cout << lli3[0] << endl;
                 }
                 else if (lli3[0][0] == '3')
                 {
-                    lli3[op] = lli3[op].substr(1, 18);
+                    lli3[0] = lli3[0].substr(1, 18);
                     // cout << lli3[0] << endl;
                     carry = 1;
                 }
 
                 else
                 {
-                    lli3[op] = lli3[op].substr(1, 18);
+                    lli3[0] = lli3[0].substr(1, 18);
                     // cout << lli3[0] << endl;
                     // carry = 1;
                 }
@@ -184,7 +184,7 @@ public:
                     }
                     else
                     {
-                        lli3[op] = lli3[op].substr(1, 18);
+                        lli3[0] = lli3[0].substr(1, 18);
                         // cout << lli3[0] << endl;
                         ;
 
@@ -210,7 +210,7 @@ public:
                     }
                     else
                     {
-                        lli3[op] = lli3[op].substr(1, 18);
+                        lli3[0] = lli3[0].substr(1, 18);
                         cout << lli3[0] << endl;
 
                         // carry = 1;
@@ -232,7 +232,7 @@ public:
         // Subtraction of two vectors
         vector<string> lli3;
 
-        int l1, l2, op = 0, g = 0;
+        int l1, l2, g = 0;
         for (l1 = lli1.size() - 1, l2 = lli2.size() - 1; (l1 >= 0) && (l2 >= 0); l1--, l2--)
         {
             long long int temp = lli1[l1] - lli2[l2];
@@ -307,6 +307,20 @@ public:
     {
         this->s = s1.s;
         return *this;
+    }
+
+    akaUnlimInt operator+(akaUnlimInt s1)
+    {
+        akaUnlimInt s2;
+        s2.s = driver(*this, s1,"+");
+        return s2;
+    }
+
+    akaUnlimInt operator-(akaUnlimInt s1)
+    {
+        akaUnlimInt s2;
+        s2.s = driver(*this, s1,"-");
+        return s2;
     }
 
     void print()
@@ -451,41 +465,33 @@ public:
         string ans = driver(s1, s2, "-");
         return ans;
     }
+
+    friend ostream& operator<<(ostream& os, const akaUnlimInt& unInt);
+    friend istream& operator>>(istream& is,  akaUnlimInt& unInt);
 };
+
+ostream& operator<<(ostream& os, const akaUnlimInt& unInt)
+{
+    os << unInt.s;
+    return os;
+}
+
+istream& operator>>(istream& is, akaUnlimInt& unInt)
+{
+    is >> unInt.s;
+    return is;
+}
 
 int main()
 {
     int choice = 0;
-    string s1, s2;
     akaUnlimInt num1, num2;
-    cout << "Welcome!";
-    while (choice != -1)
-    {
-    label:
-        cout << "\nEnter number of your choice: \n1) Add\n2) Subtract\n3) Exit\n";
-        cin >> choice;
-        if(choice==3){
-            break;
-        }
-        cout << "\nEnter First Number: ";
-        cin >> s1;
-        cout << "\nEnter Second Number: ";
-        cin >> s2;
-        num1 = s1;
-        num2 = s2;
-        switch (choice)
-        {
-        case 1:
-            cout << "Answer: " << num1.add(num1, num2);
-            break;
-        case 2:
-            cout << "Answer: " << num1.sub(num1, num2);
-            break;
-        default:
-            cout << "Invalid Choice! Try Again!";
-            goto label;
-            break;
-        }
-    }
+    cout<<"Enter two numbers: "<<endl;
+    cin>>num1>>num2;
+    akaUnlimInt ans;
+    ans = num1-num2;
+    cout<<"The difference is: "<<ans<<endl;
+    ans = num1+num2;
+    cout<<"The sum is: "<<ans<<endl;
     return 0;
 }
