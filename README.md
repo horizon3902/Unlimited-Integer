@@ -1,6 +1,6 @@
 # Unlimited-Integer
 Implementation of an integer data type with unlimited (i.e., limited by RAM) size. 
-Addition and Subtraction functions also implemented with <img src="https://imgur.com/a/5mGKDEE" /> time complexity.
+Addition and Subtraction functions also implemented with <img src="https://i.imgur.com/4VGYyeD.png" /> time complexity.
 
 ## Functions
 ### User Functions - 
@@ -19,7 +19,7 @@ Addition and Subtraction functions also implemented with <img src="https://imgur
 ## Implementation
 To implement our UnlimitedInteger data type, first we use strings to store the large number.
 
-Then, to implement addition and subtraction of such large numbers in less than <img src="https://imgur.com/a/ACAELdG" /> time complexity, we implement a method called `chunkingAdd()` for addition and `chunkingSub()` for subtraction which converts our string of numbers into chunks of 18 digits and store it in a vector of `long long int`.
+Then, to implement addition and subtraction of such large numbers in less than <img src="https://i.imgur.com/hyh7oTG.png" /> time complexity, we implement a method called `chunkingAdd()` for addition and `chunkingSub()` for subtraction which converts our string of numbers into chunks of 18 digits and store it in a vector of `long long int`.
 
 For addition, after chunking, we add individual chunks of 18 digit numbers, and have implemented separate `carry` variable to handle carry-over in case of an overflow during addition of two chunks.
 
