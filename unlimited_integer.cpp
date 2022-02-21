@@ -1,8 +1,8 @@
-/* AKA Coders 
-* BT20CSE216 A bhishek Kanojia
-* BT20CSE209 K shitij Agarkar
-* BT20CSE214 A viral Verma
-*/
+/* AKA Coders
+ * BT20CSE216 A bhishek Kanojia
+ * BT20CSE209 K shitij Agarkar
+ * BT20CSE214 A viral Verma
+ */
 #include <iostream>
 #include <vector>
 #include <string>
@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class akaBigInt
+class akaUnlimInt
 {
 private:
     string s;
@@ -18,12 +18,12 @@ private:
     vector<long long int> lli2;
 
 public:
-    akaBigInt()
+    akaUnlimInt()
     {
         string s = "";
     }
 
-    akaBigInt(string s)
+    akaUnlimInt(string s)
     {
         this->s = s;
     }
@@ -58,14 +58,14 @@ public:
         return s;
     }
 
-    void chunking(akaBigInt s1, akaBigInt s2)
+    void chunkingAdd(akaUnlimInt s1, akaUnlimInt s2)
     {
 
         int sz1 = s1.s.size();
         int sz2 = s2.s.size();
 
         int i, j;
-        // chunking the string s1
+        // chunkingAdd the string s1
         for (i = sz1 - 18; i >= 0; i -= 18)
         {
             // breaking the string >>>> converting into integer >>>> pushing into the vector lli1
@@ -92,14 +92,14 @@ public:
         reverse(lli1.begin(), lli1.end());
         reverse(lli2.begin(), lli2.end());
     }
-    void chunkingspecial(akaBigInt s1, akaBigInt s2)
+    void chunkingSub(akaUnlimInt s1, akaUnlimInt s2)
     {
 
         int sz1 = s1.s.size();
         int sz2 = s2.s.size();
 
         int i, j;
-        // chunking the string s1
+        // chunkingAdd the string s1
         for (i = sz1 - 18; i >= 0; i -= 18)
         {
             // breaking the string >>>> converting into integer >>>> pushing into the vector lli1
@@ -126,9 +126,9 @@ public:
         reverse(lli2.begin(), lli2.end());
     }
 
-    string addOp(akaBigInt s1, akaBigInt s2)
+    string addOp(akaUnlimInt s1, akaUnlimInt s2)
     {
-        chunking(s1, s2);
+        chunkingAdd(s1, s2);
         // Addition of two vectors
         vector<string> lli3;
         int carry = 0;
@@ -226,12 +226,11 @@ public:
         return outpt;
     }
     int ii = 0;
-    string subOp(akaBigInt s1, akaBigInt s2)
+    string subOp(akaUnlimInt s1, akaUnlimInt s2)
     {
-        chunkingspecial(s1, s2);
+        chunkingSub(s1, s2);
         // Subtraction of two vectors
         vector<string> lli3;
-        int borrow = 0;
 
         int l1, l2, op = 0, g = 0;
         for (l1 = lli1.size() - 1, l2 = lli2.size() - 1; (l1 >= 0) && (l2 >= 0); l1--, l2--)
@@ -298,13 +297,13 @@ public:
         return res;
     }
 
-    akaBigInt &operator=(string s1)
+    akaUnlimInt &operator=(string s1)
     {
         this->s = s1;
         return *this;
     }
 
-    akaBigInt operator=(akaBigInt s1)
+    akaUnlimInt operator=(akaUnlimInt s1)
     {
         this->s = s1.s;
         return *this;
@@ -315,7 +314,7 @@ public:
         cout << this->s;
     }
 
-    int BIGcmp(string s1, string s2)
+    int UnlimCmp(string s1, string s2)
     {
 
         if (s1.size() > s2.size())
@@ -343,7 +342,7 @@ public:
         return 0;
     }
 
-    string driver(akaBigInt s1, akaBigInt s2, string operation)
+    string driver(akaUnlimInt s1, akaUnlimInt s2, string operation)
     {
 
         if (operation == "+")
@@ -364,11 +363,11 @@ public:
             else if (s1.s[0] == '-' && s2.s[0] != '-')
             {
                 s1.s = s1.s.substr(1, s1.s.size() - 1);
-                if (BIGcmp(s1.s, s2.s) == 1)
+                if (UnlimCmp(s1.s, s2.s) == 1)
                 {
                     return "-" + subOp(s1, s2);
                 }
-                else if (BIGcmp(s1.s, s2.s) == -1)
+                else if (UnlimCmp(s1.s, s2.s) == -1)
                 {
                     return subOp(s2, s1);
                 }
@@ -380,11 +379,11 @@ public:
             else
             {
                 s2.s = s2.s.substr(1, s2.s.size() - 1);
-                if (BIGcmp(s1.s, s2.s) == 1)
+                if (UnlimCmp(s1.s, s2.s) == 1)
                 {
                     return subOp(s1, s2);
                 }
-                else if (BIGcmp(s1.s, s2.s) == -1)
+                else if (UnlimCmp(s1.s, s2.s) == -1)
                 {
                     return "-" + subOp(s2, s1);
                 }
@@ -398,11 +397,11 @@ public:
         {
             if (s1.s[0] != '-' && s2.s[0] != '-')
             {
-                if (BIGcmp(s1.s, s2.s) == 1)
+                if (UnlimCmp(s1.s, s2.s) == 1)
                 {
                     return subOp(s1, s2);
                 }
-                else if (BIGcmp(s1.s, s2.s) == -1)
+                else if (UnlimCmp(s1.s, s2.s) == -1)
                 {
                     return "-" + subOp(s2, s1);
                 }
@@ -415,11 +414,11 @@ public:
             {
                 s1.s = s1.s.substr(1, s1.s.size() - 1);
                 s2.s = s2.s.substr(1, s2.s.size() - 1);
-                if (BIGcmp(s1.s, s2.s) == 1)
+                if (UnlimCmp(s1.s, s2.s) == 1)
                 {
                     return "-" + subOp(s1, s2);
                 }
-                else if (BIGcmp(s1.s, s2.s) == -1)
+                else if (UnlimCmp(s1.s, s2.s) == -1)
                 {
                     return subOp(s2, s1);
                 }
@@ -441,13 +440,13 @@ public:
         }
     }
 
-    string add(akaBigInt s1, akaBigInt s2)
+    string add(akaUnlimInt s1, akaUnlimInt s2)
     {
         string ans = driver(s1, s2, "+");
         return ans;
     }
 
-    string sub(akaBigInt s1, akaBigInt s2)
+    string sub(akaUnlimInt s1, akaUnlimInt s2)
     {
         string ans = driver(s1, s2, "-");
         return ans;
@@ -456,31 +455,34 @@ public:
 
 int main()
 {
-    int choice=0;
-    string s1,s2;
-    akaBigInt num1, num2;
-    cout<<"Welcome!";
-    while(choice!=-1){
-        cout<<"\nEnter First Number: ";
-        cin>>s1;
-        cout<<"\nEnter Second Number: ";
-        cin>>s2;
+    int choice = 0;
+    string s1, s2;
+    akaUnlimInt num1, num2;
+    cout << "Welcome!";
+    while (choice != -1)
+    {
+    label:
+        cout << "\nEnter number of your choice: \n1) Add\n2) Subtract\n3) Exit\n";
+        cin >> choice;
+        if(choice==3){
+            break;
+        }
+        cout << "\nEnter First Number: ";
+        cin >> s1;
+        cout << "\nEnter Second Number: ";
+        cin >> s2;
         num1 = s1;
         num2 = s2;
-label:  cout<<"\nEnter number of your choice: \n1) Add\n2) Subtract\n3) Exit\n";
-        cin>>choice;
-        switch(choice){
-            case 1:
-            cout<<num1.add(num1,num2);
+        switch (choice)
+        {
+        case 1:
+            cout << "Answer: " << num1.add(num1, num2);
             break;
-            case 2:
-            cout<<num1.sub(num1,num2);
+        case 2:
+            cout << "Answer: " << num1.sub(num1, num2);
             break;
-            case 3:
-            choice = -1;
-            break;
-            default:
-            cout<<"Invalid Choice! Try Again!";
+        default:
+            cout << "Invalid Choice! Try Again!";
             goto label;
             break;
         }
