@@ -223,9 +223,12 @@ public:
         {
             outpt += lli3[i];
         }
+        lli1.clear();
+        lli2.clear();
+        lli3.clear();
+
         return outpt;
     }
-    int ii = 0;
     string subOp(akaUnlimInt s1, akaUnlimInt s2)
     {
         chunkingSub(s1, s2);
@@ -294,6 +297,9 @@ public:
         }
 
         string res = leadingzero(outpt);
+        lli1.clear();
+        lli2.clear();
+        lli3.clear();
         return res;
     }
 
@@ -312,14 +318,14 @@ public:
     akaUnlimInt operator+(akaUnlimInt s1)
     {
         akaUnlimInt s2;
-        s2.s = driver(*this, s1,"+");
+        s2.s = driver(*this, s1, "+");
         return s2;
     }
 
     akaUnlimInt operator-(akaUnlimInt s1)
     {
         akaUnlimInt s2;
-        s2.s = driver(*this, s1,"-");
+        s2.s = driver(*this, s1, "-");
         return s2;
     }
 
@@ -466,17 +472,17 @@ public:
         return ans;
     }
 
-    friend ostream& operator<<(ostream& os, const akaUnlimInt& unInt);
-    friend istream& operator>>(istream& is,  akaUnlimInt& unInt);
+    friend ostream &operator<<(ostream &os, const akaUnlimInt &unInt);
+    friend istream &operator>>(istream &is, akaUnlimInt &unInt);
 };
 
-ostream& operator<<(ostream& os, const akaUnlimInt& unInt)
+ostream &operator<<(ostream &os, const akaUnlimInt &unInt)
 {
     os << unInt.s;
     return os;
 }
 
-istream& operator>>(istream& is, akaUnlimInt& unInt)
+istream &operator>>(istream &is, akaUnlimInt &unInt)
 {
     is >> unInt.s;
     return is;
@@ -486,12 +492,12 @@ int main()
 {
     int choice = 0;
     akaUnlimInt num1, num2;
-    cout<<"Enter two numbers: "<<endl;
-    cin>>num1>>num2;
+    cout << "Enter two numbers: " << endl;
+    cin >> num1 >> num2;
     akaUnlimInt ans;
-    ans = num1-num2;
-    cout<<"The difference is: "<<ans<<endl;
-    ans = num1+num2;
-    cout<<"The sum is: "<<ans<<endl;
+    ans = num1 - num2;
+    cout << "The difference is: " << ans << endl;
+    ans = num1 + num2;
+    cout << "The sum is: " << ans << endl;
     return 0;
 }
